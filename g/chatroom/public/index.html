@@ -10,6 +10,7 @@
         <h1>Login to the Chat Room</h1>
         <form id="login-form">
             <input type="text" id="username-input" placeholder="Enter your username..." required>
+            <input type="password" id="password-input" placeholder="Enter the password..." required>
             <button type="submit" id="login-button">Login</button>
         </form>
     </div>
@@ -24,27 +25,26 @@
             <button id="send-button" disabled>send</button>
         </div>
     </div>
+
     <script>
-const passwordInput = "hr4t";
+      
 const loginContainer = document.getElementById('login-container');
 const chatContainer = document.getElementById('chat-container');
 const loginForm = document.getElementById('login-form');
 const usernameInput = document.getElementById('username-input');
+const passwordInput = "hr4t"
 const chatMessages = document.getElementById('chat-messages');
 const messageInput = document.getElementById('message-input');
 const sendButton = document.getElementById('send-button');
-const socket = new WebSocket('wss://discord-20-2.coolgamermoth.repl.co');
+const socket = new WebSocket('wss://chatroom-websocket.coolgamermoth.repl.co');
 
 loginForm.addEventListener('submit', (event) => {
     event.preventDefault();
     const username = usernameInput.value;
     const password = btoa(passwordInput); 
-    loginContainer.style.display = 'none';
-    chatContainer.style.display = 'block';
-    localStorage.setItem("Password", password);
-    localStorage.setItem("Username", username);
-    enableChatInput();
-   
+        loginContainer.style.display = 'none';
+        chatContainer.style.display = 'block';
+        enableChatInput();
 });
 
 socket.addEventListener('open', (event) => {
@@ -73,10 +73,6 @@ function loadChatHistory(chatHistoryData) {
 sendButton.addEventListener('click', () => {
     const message = messageInput.value;
     const username = usernameInput.value;
-    if (username == "Ronin" || username == "ronin") {
-      alert('bozo');
-      return;
-    };
     if (message.trim() !== '' && username.trim() !== '') {
         sendMessage(username, message);
         appendMessage(username, message, new Date().toISOString());
@@ -122,7 +118,6 @@ function enableChatInput() {
     messageInput.removeAttribute('disabled');
     sendButton.removeAttribute('disabled');
 }
-      
 </script>
 </body>
 </html>
