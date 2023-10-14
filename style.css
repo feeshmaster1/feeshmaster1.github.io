@@ -1,0 +1,67 @@
+
+body, ul, li {
+    margin: 0;
+    padding: 0;
+}
+.title-text {
+  text-align: center;
+}
+
+.top-menu {
+    list-style-type: none;
+    background-color: #333;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.top-menu li {
+    display: inline;
+}
+
+.top-menu a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    background-color: #444;
+    border: 1px solid #666;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+.top-menu a:hover {
+    background-color: #ccc;
+    transform: scale(1.05);
+}
+
+
+
+
+.game-button {
+    margin: 1px;
+    width: calc(25% - 20px); 
+    border-radius: 50%;
+}
+
+.scrolling-content::before {
+    content: "";
+    display: block;
+    height: 0;
+    width: 100%;
+}
+
+
+.scrolling-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px auto 0 auto; 
+}
+
+.game-button {
+    margin: 1%;
+    width: calc(16.66% - 1.33%); /* 16.66% allows for 6 buttons per row with some margin */
+    border-radius: 50%;
+}
+
+html {
+  background-color: #666;
+}

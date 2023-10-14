@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Car-game</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<header class="game-title">
+  <nav>
+  <ul class="top-menu">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="request.html">Request</a></li>
+  </ul>
+  <h1><b>Car-Game</b></h1>
+
+
+  
+</header>
+
+<body>
+  <div style="padding-top: 5px;" class="container" align="Center">
+    <iframe class="gm-iframe" id="gm-area" src="https://bonbang.github.io/monster-tracks" width="810" height="540" scrolling="none" frameborder="0" allowfullscreen></iframe>
+
+     <div style="padding-top: 10px;" class="container" align="Center">    
+      <button  class="btn theme-btn-1 btn-effect-1 text-uppercase" onclick="openFullscreen();">FullScreen</button>
+     </div>
+
+
+  <script>
+  var elem = document.getElementById("gm-area");
+  function openFullscreen() {
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) { /* Safari */
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE11 */
+      elem.msRequestFullscreen();
+    }
+  }
+  </script>
+
+
+  </div>
+</body>
+
+</html>
