@@ -62,7 +62,7 @@
             event.preventDefault();
             const password = passwordInput.value;
 
-            if (password === 'pass') {
+            if (password === atob(atob(atob(atob("V1RCa1IyVnRUak5RVkRBOQ=="))))) {
                 loginContainer.style.display = 'none';
                 chatContainer.style.display = 'block';
                 enableChatInput();
@@ -100,6 +100,9 @@
                 sendMessage(username, message, isSpecial);
                 appendMessage(username, message, new Date().toISOString(), isSpecial);
                 messageInput.value = '';
+                messageInput.addAttribute('disabled');
+                sendButton.addAttribute('disabled');
+                setTimeout(enableChatInput(), 3000);
             }
         });
 
