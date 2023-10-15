@@ -30,6 +30,7 @@
     </div>
 
     <script>
+        alert("please make sure to follow basic rules of not being to toxic and not using too much foul language or you might get banned")
         const loginContainer = document.getElementById('login-container');
         const chatContainer = document.getElementById('chat-container');
         const loginForm = document.getElementById('login-form');
@@ -92,17 +93,34 @@
             });
         }
 
+        let isSendCooldown = false;
+
         sendButton.addEventListener('click', () => {
+            if (isSendCooldown) {
+                alert("Please wait before sending another message.");
+                return;
+            }
+
             const message = messageInput.value;
             const username = usernameInput.value;
 
             if (message.trim() !== '' && username.trim() !== '') {
-                sendMessage(username, message, isSpecial);
-                appendMessage(username, message, new Date().toISOString(), isSpecial);
-                messageInput.value = '';
-                messageInput.addAttribute('disabled');
-                sendButton.addAttribute('disabled');
-                setTimeout(enableChatInput(), 3000);
+                if (message.length <= 350) {
+                    sendMessage(username, message, isSpecial);
+                    appendMessage(username, message, new Date().toISOString(), isSpecial);
+                    messageInput.value = '';
+                    sendButton.setAttribute('disabled', true);
+                    isSendCooldown = true;
+
+                    
+                    setTimeout(() => {
+                        messageInput.removeAttribute('disabled');
+                        sendButton.removeAttribute('disabled');
+                        isSendCooldown = false;
+                    }, 3000);
+                } else {
+                    alert("Please send messages under 350 characters in length.");
+                }
             }
         });
 
