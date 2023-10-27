@@ -222,10 +222,10 @@ function sendDm(sender, message, isSpecial, DM) {
           newDm.className = "dm-button";
           newDm.id = dm_name;
           newDm.style.margin = "2.5px";
-          socket.send(JSON.stringify({ request: 'create-history' , name: dm_name}));
+          socket.send(JSON.stringify({ request: 'create-history' , name: dm_name + " " + String(usernameInput.value)}));
           SwitchDm(dm_name);
 
-          sendDm("System", `Welcome to your DM with ${dm_name}`, true, dm_name);
+          /*sendDm("System", `Welcome to your DM with ${dm_name}`, true, dm_name);*/
           newDm.addEventListener('click', () => {
             SwitchDm(dm_name);
           });
@@ -270,7 +270,7 @@ function DeleteDM() {
     if (confirm(`are you sure you want to delete your dm with ${DmName}?`) == true) {
   var button = document.getElementById(DmName);
   button.parentNode.removeChild(button);
-      socket.send(JSON.stringify({ request: 'Remove-DM' , name: DmName}));
+      socket.send(JSON.stringify({ request: 'Remove-DM' , name: DmName + " " + String(usernameInput.value)}));
     SwitchDm()
     }
   } else {
