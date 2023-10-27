@@ -49,6 +49,7 @@ body {
 
 #message-input {
     width: 70%;
+    height: 30px;
     padding: 8px;
     border: none;
     background-color: #36393f;
@@ -59,6 +60,7 @@ body {
 
 #send-button {
     width: 25%;
+    height: 30px;
     padding: 8px;
     background-color: #7289da;
     color: #ffff;
@@ -86,4 +88,45 @@ body {
 .message-text {
     margin-top: 5px;
 }
+#dm-buttons {
+}
+.dm-button {
+  height:25px;
+  background-color: #474747;
+  color: #ffffff/*#808080*/;
+  border: 1px solid #474760;
+  border-radius: 25%;
+  font-size: 10px;
+}
 
+#add-button {
+  width: 25px;
+  height: 25px;
+  background-color: #474747;
+  color: #37a354;
+  border: 1px solid #474760;
+  border-radius: 25%;
+  font-size: 16px;
+}
+
+
+#main {
+  width: 55px;
+  height: 25px;
+  background-color: #474747;
+  color: #37a354;
+  border: 1px solid #474760;
+  border-radius: 25%;
+  font-size: 16px;
+}
+
+#deleteDm {
+  width:25px;
+  height: 25px;
+  background-color: #474747;
+  color: #37a354;
+  border: 1px solid #474760;
+  border-radius: 25%;
+  font-size: 16px;
+  float: right;
+}
