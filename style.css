@@ -76,4 +76,14 @@ html {
   height: 25px;
   width: 350px;
   border-radius: 25px;
+  backround-color: #0000;
 }
+
+#Search:hover {
+  border-radius: none;
+  color: red;
+  
+
+    
+}
+
