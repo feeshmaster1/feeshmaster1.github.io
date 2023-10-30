@@ -65,3 +65,15 @@ body, ul, li {
 html {
   background-color: #666;
 }
+
+#SearchContainer {
+  text-align: center;
+}
+
+#Search {
+  color: grey;
+  border-color: red;
+  height: 25px;
+  width: 350px;
+  border-radius: 25px;
+}
