@@ -19,62 +19,65 @@
         </nav>
       <h1 class="title-text">Feeshmasters Game Website</h1><br>
       <h2>keep in mind that this website is Work In Progress and will be updated often if other people use it :)(will be at least 50 games)</h2>
+        <div id="SearchContainer">
+  <input id="Search", placeholder="search..."></input>
+</div>
     </header>
       
     <main>
         <div class="scrolling-content">
    
-            <div class="game-button">
+            <div class="game-button", id="chatroom">
                 <a href="g/chatroom/public/index.html">
                     <img src="Assets/Chatroom.jpeg" alt="chatroom", style="height:150px;width:150px;border-radius:25%;">
                 </a>
             </div>
-            <div class="game-button">
+            <div class="game-button", id="getting over it">
                 <a href="g/Getting Over It v1/index.html">
                     <img src="Assets/getting over it.jpeg" alt="getting over it", style="height:150px;width:150px;border-radius: 25%;">
                 </a>
             </div>
-            <div class="game-button">
+            <div class="game-button", id="the shadow reform">
                 <a href="g/The Shadow Reform/index.html">
                     <img src="Assets/the shadow reform.png" alt="the shadow reform", style="height:150px;width:150px;border-radius: 25%;">
                 </a>
             </div>
-            <div class="game-button">
+            <div class="game-button", id="nitro racing">
                 <a href="g/Nitro Racing/index.html">
                     <img src="Assets/nitro-racing.jpeg" alt="nitro racing", style="height:150px;width:150px;border-radius: 25%;">
                 </a>
             </div>
-            <div class="game-button">
+            <div class="game-button", id="level eaten">
                 <a href="g/Level EATEN! - v0/index.html">
                     <img src="Assets/level eaten.jpeg" alt="level eaten", style="height:150px;width:150px;border-radius: 25%;">
                 </a>
             </div>
-            <div class="game-button">
+            <div class="game-button", id="paper minecraft v11">
                 <a href="g/Paper Minecraft v11/index.html">
                     <img src="Assets/paper minecraft.jpeg" alt="paper minecraft v11", style="height:150px;width:150px;border-radius: 25%;">
                 </a>
             </div>
             <div class="game-button">
-                <a href="g/greybox/index.html">
+                <a href="g/greybox/index.html", id="grey box">
                     <img src="Assets/grey box.jpeg" alt="grey box", style="height:150px;width:150px;border-radius: 25%;">
                 </a>
             </div>
-            <div class="game-button">
+            <div class="game-button", id="menja">
                 <a href="g/menja">
                     <img src="Assets/menja.png" alt="menja", style="height:150px;width:150px;border-radius: 25%;">
                 </a>
             </div>
-            <div class="game-button">
+            <div class="game-button", id="hacker type">
                 <a href="g/hackertype/index.html">
                     <img src="Assets/hacker type.png" alt="hacker type", style="height:150px;width:150px;border-radius: 25%;">
                 </a>
             </div>
-            <div class="game-button">
+            <div class="game-button", id="learn to fly 2">
                 <a href="g/learntofly2/index.html">
                     <img src="Assets/lrn2.jpeg" alt="learn to fly 2", style="height:150px;width:150px;border-radius: 25%;">
                 </a>
             </div>
-            <div class="game-button">
+            <div class="game-button", id="learn to fly">
                 <a href="g/learntofly/index.html">
                     <img src="Assets/lrn.jpeg" alt="learn to fly", style="height:150px;width:150px;border-radius: 25%;">
                 </a>
@@ -436,7 +439,25 @@
             </div>
 
 
-            
+            <script>
+                const SearchBar = document.getElementById("Search");
+  
+  SearchBar.addEventListener("input", event => { 
+        let input = SearchBar.value; 
+        input= input.toLowerCase(); 
+        let x = document.getElementsByClassName('game-button'); 
+
+        for (i = 0; i < x.length; i++) {  
+            if (!x[i].id.toLowerCase().includes(input)) { 
+                x[i].style.display="none"; 
+            } 
+            else { 
+                x[i].style.display="inline-block";                  
+            } 
+        } 
+    
+  });
+            </script>
             
             
             
