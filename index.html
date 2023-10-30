@@ -25,6 +25,7 @@
     </header>
       
     <main>
+        <p id="result-text", style="text-align:center;"></p>
         <div class="scrolling-content">
    
             <div class="game-button", id="chatroom">
@@ -457,8 +458,9 @@
             } 
         }
         if (num == 0) {
-            
-
+      document.getElementById("result-text").innerHTML = `no results found for "${input}"!`;
+    } else {
+      document.getElementById("result-text").innerHTML = ""
         }
     
   });
