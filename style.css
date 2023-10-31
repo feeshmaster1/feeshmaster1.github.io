@@ -26,10 +26,15 @@ body, ul, li {
     border: 1px solid #666;
     border-radius: 5px;
     margin: 0 5px;
+    transition-property: background-color, color;
+    transition-duration: 1s;
 }
 .top-menu a:hover {
-    background-color: #ccc;
+    background-color: #a3a3a3;
+    color: #ededed;
     transform: scale(1.05);
+    transition-property: background-color, color, transform;
+    transition-duration: 1s;
 }
 
 
@@ -37,10 +42,24 @@ body, ul, li {
 
 .game-button {
     margin: 1px;
-    width: calc(25% - 20px); 
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
+    border-color: red;
 }
 
+
+.button-img {
+  border-radius: 25%;
+  height:150px;
+  width:150px;
+}
+
+.button-img:hover {
+  border-radius: 15%;
+  transition-property: border-radius;
+  transition-duration: 0.5s;
+}
 .scrolling-content::before {
     content: "";
     display: block;
@@ -58,7 +77,7 @@ body, ul, li {
 
 .game-button {
     margin: 1%;
-    width: calc(16.66% - 1.33%); /* 16.66% allows for 6 buttons per row with some margin */
+    width: calc(16.66% - 1.33%); /* 16.66% allows for 6 buttons per row with some margin - note to self*/
     border-radius: 50%;
 }
 
