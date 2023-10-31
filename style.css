@@ -76,14 +76,19 @@ html {
   height: 25px;
   width: 350px;
   border-radius: 0px;
-  backround-color: #0000;
+  background-color: #282928;
+  transition-property: background-color, border-radius;
+  transition-duration: 0.5s;
 }
+
 
 #Search:hover {
   border-radius: 25px;
   color: red;
-  
+  background-color: #3d3d3d;
+  transition-property: border-radius, background-color;
+  transition-duration: 0.5s;
 
-    
+
+
 }
-
