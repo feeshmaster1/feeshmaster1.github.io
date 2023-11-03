@@ -10,7 +10,7 @@
         <h1 id="page-title">Login to your Account or create one <a onclick="CreateAccount()", style="color:#425bdb;">here</a></h1>
         <form id="login-form">
             <input type="text" id="username-input" placeholder="Enter your username..." required>
-            <input type="text" id="password-input" placeholder="Enter your password..." required>
+            <input type="password" id="password-input" placeholder="Enter your password..." required>
             <button type="submit" id="login-button">Login</button>
         </form>
         <form id="create-form" style="display: none;">
@@ -40,7 +40,6 @@
     </div>
 
     <script>
-        alert("not currently working cus the world is a bad place :/");
         const loginContainer = document.getElementById('login-container');
         const chatContainer = document.getElementById('chat-container');
         const loginForm = document.getElementById('login-form');
@@ -121,8 +120,15 @@
                       alert('username is taken!');
                     };
                   } else {
-              if (data.DM === DmName) {
+                    
+              if (data.DM === 'main' && data.DM === DmName) {
+
  isSpecial = banned_names.includes(username);               appendMessage(data.sender, data.message, data.timestamp, data.isSpecial);
+            } else {
+ let DmNameWhole = DmName + " " + String(usernameInput.value);
+                if (data.DM === DmNameWhole || data.DM === DmNameWhole.split(" ").reverse().join(" ")) {
+               appendMessage(data.sender, data.message, data.timestamp, data.isSpecial);   
+                }
             }
             }
             }
@@ -167,8 +173,8 @@
                   message: message,
                   timestamp: timestamp,
                   isSpecial: isSpecial,
-                  type: 'send_message'
-
+                  type: 'send_message',
+                  DM: 'main'
               };
               socket.send(JSON.stringify(messageData));
           } else {
@@ -231,7 +237,7 @@ function sendDm(sender, message, isSpecial, DM) {
             SwitchDm(dm_name);
           });
           document.getElementById("dm-buttons").appendChild(newDm);
-          alert("please tell the person you are DMing to refresh and you will have to send a message first for now.")}};
+          alert("please tell the person you are DMing to refresh")}};
 
       function addButton(button_name) {
         const newDm = document.createElement('button');
@@ -260,7 +266,7 @@ function SwitchDm(dm_name="main") {
     DmName = 'main';
     document.getElementById("chatroom-title").innerHTML = "Welcome to the Chat Room";
   } else {
-   socket.send(JSON.stringify({ request: 'get_chat_history', name: dm_name}));
+   socket.send(JSON.stringify({ request: 'get_chat_history', name: dm_name + " " + String(usernameInput.value)}));
     DmName = dm_name;
     document.getElementById("chatroom-title").innerHTML = `This is your conversation with ${dm_name}`;
   }
