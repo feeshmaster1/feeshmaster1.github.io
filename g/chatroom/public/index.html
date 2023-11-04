@@ -120,6 +120,24 @@
                       alert('username is taken!');
                     };
                   } else {
+                   if (data.request === 'delete-button') {
+                     const username = String(usernameInput.value);
+                     const Array = data.button.split(" ");
+
+                     const indexOfUsername = Array.indexOf(username);
+
+                     if (indexOfUsername !== -1) {
+                       Array.splice(indexOfUsername, 1);
+                     }
+
+                     const name = Array[0];
+                let button = document.getElementById(name);
+                button.parentNode.removeChild(button);
+                SwitchDm('main');
+                
+                   } else {
+                     
+                  
                     
               if (data.DM === 'main' && data.DM === DmName) {
 
@@ -130,6 +148,7 @@
                appendMessage(data.sender, data.message, data.timestamp, data.isSpecial);   
                 }
             }
+                   }    
             }
             }
             }};
@@ -224,6 +243,7 @@ function sendDm(sender, message, isSpecial, DM) {
         const username = usernameInput.value;
         const dm_name = prompt("Who would you like to have a DM with?");
         if (dm_name) {
+          if (dm_name != username) {
           const newDm = document.createElement('button');
           newDm.textContent = dm_name;
           newDm.className = "dm-button";
@@ -232,12 +252,17 @@ function sendDm(sender, message, isSpecial, DM) {
           socket.send(JSON.stringify({ request: 'create-history' , name: dm_name + " " + String(usernameInput.value)}));
           SwitchDm(dm_name);
 
-          /*sendDm("System", `Welcome to your DM with ${dm_name}`, true, dm_name);*/
+          sendDm("System", `Welcome to your DM with ${dm_name}`, true, dm_name);
+            appendMessage("System", `Welcome to your DM with ${dm_name}`, new Date().toISOString(), true);
+          
           newDm.addEventListener('click', () => {
             SwitchDm(dm_name);
+            
           });
           document.getElementById("dm-buttons").appendChild(newDm);
-          alert("please tell the person you are DMing to refresh")}};
+          alert("please tell the person you are DMing to refresh")} else {
+            alert('you cannot create a DM with yourself!');
+          }}};
 
       function addButton(button_name) {
         const newDm = document.createElement('button');
@@ -275,10 +300,10 @@ function SwitchDm(dm_name="main") {
 function DeleteDM() {
   if (DmName != 'main') {
     if (confirm(`are you sure you want to delete your dm with ${DmName}?`) == true) {
-  var button = document.getElementById(DmName);
-  button.parentNode.removeChild(button);
       socket.send(JSON.stringify({ request: 'Remove-DM' , name: DmName + " " + String(usernameInput.value)}));
-    SwitchDm()
+      let button = document.getElementById(DmName);
+      button.parentNode.removeChild(button);
+      SwitchDm()
     }
   } else {
     if (confirm('you cant delete the main chat :/ agree?') == true) {
