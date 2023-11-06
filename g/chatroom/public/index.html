@@ -109,7 +109,8 @@
 
                   } else {
                     if (data.ResponseCode === 'fail')
-                    alert('wrong username or password!')
+                    alert('wrong username or password!');
+                    alert("this may be due to the fact that i replaced all of the spaces in your name with '_' in order for the thing not to break");
                   };
                 } else {
                   if (data.request === 'create-response') {
@@ -117,7 +118,7 @@
                       alert('Account created!');
                       location.reload();
                     } else {
-                      alert('username is taken!');
+                      alert('username is taken or username contains spaces!');
                     };
                   } else {
                    if (data.request === 'delete-button') {
