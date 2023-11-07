@@ -79,7 +79,7 @@
             const username = usernameInput.value;
 
 
-            socket.send(JSON.stringify({ request: 'get_chat_history' , name: 'main'}));
+            socket.send(JSON.stringify({ request: 'get_chat_history' , name: 'main', send_from: window.location.href}));
         });
 
 
@@ -137,6 +137,11 @@
                 SwitchDm('main');
                 
                    } else {
+                     if (data.request === 'error') {
+                       alert(`error: ${data.errorCode}\n${data.message}`);
+                       alert(window.location.href);
+                       
+                     } else {
                      
                   
                     
@@ -150,7 +155,7 @@
                 }
             }
                    }    
-            }
+            }}
             }
             }};
         });
