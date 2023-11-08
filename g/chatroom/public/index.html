@@ -139,8 +139,9 @@
                    } else {
                      if (data.request === 'error') {
                        alert(`error: ${data.errorCode}\n${data.message}`);
-                       alert(window.location.href);
-                       
+                       if (data.errorCode != '102') {
+                       location.reload()
+                       }
                      } else {
                      
                   
@@ -199,7 +200,8 @@
                   timestamp: timestamp,
                   isSpecial: isSpecial,
                   type: 'send_message',
-                  DM: 'main'
+                  DM: 'main',
+                  send_from: window.location.href
               };
               socket.send(JSON.stringify(messageData));
           } else {
@@ -216,7 +218,8 @@ function sendDm(sender, message, isSpecial, DM) {
           message: message,
           timestamp: timestamp,
           isSpecial: isSpecial,
-          DM: DM + " " + usernameInput.value
+          DM: DM + " " + usernameInput.value,
+          send_from: window.location.href
       };
       socket.send(JSON.stringify(messageData));
   } else {
@@ -293,11 +296,11 @@ function SwitchDm(dm_name="main") {
       elements[0].parentNode.removeChild(elements[0]);
  };
   if (dm_name == "main") {
-    socket.send(JSON.stringify({ request: 'get_chat_history' , name: 'main'}));
+    socket.send(JSON.stringify({ request: 'get_chat_history' , name: 'main', send_from: window.location.href}));
     DmName = 'main';
     document.getElementById("chatroom-title").innerHTML = "Welcome to the Chat Room";
   } else {
-   socket.send(JSON.stringify({ request: 'get_chat_history', name: dm_name + " " + String(usernameInput.value)}));
+   socket.send(JSON.stringify({ request: 'get_chat_history', name: dm_name + " " + String(usernameInput.value), send_from: window.location.href}));
     DmName = dm_name;
     document.getElementById("chatroom-title").innerHTML = `This is your conversation with ${dm_name}`;
   }
