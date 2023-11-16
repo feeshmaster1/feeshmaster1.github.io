@@ -3,6 +3,7 @@
 <head>
     <title>Discord-Style Chat Room</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="favicon.png" type="image/png">
 </head>
 <body>
@@ -20,7 +21,25 @@
             <button type="submit" id="password-button">Create Account</button>
         </form>
     </div>
-
+    <div id="extras-sidebar">
+      <a id="extras-menu-settings-button" class="extras-button" onclick="openMenu('extras-menu-settings')"><i class="fa fa-fw fa-wrench"></i>Settings</a>
+      <a id="extras-menu-experimental-button" class="extras-button" onclick="openMenu('extras-menu-experimental')" on><i class="fa fa-flask" aria-hidden="true"></i> Experimental</a>
+    </div>
+  <div id="extras-menu-settings" style="width:0px;transition:0.4s;">
+    <div id="extras-menu">
+      <p style="color:white;">under uhh work things(dont you dare ever use light mode, the thing im adding)</p> 
+        <label class="switch">
+          <input type="checkbox" id="toggle-switch">
+          <span class="slider"></span>
+        </label>
+    </div>
+  </div>
+  <div id="extras-menu-experimental" style="width:0px;transition:0.4s;">
+    <div id="extras-menu">
+      <p style="color:white;">hey there</p>
+    </div>
+  </div>
+   
     <div id="chat-container" style="display: none;">
         <div id="chat-header">
             <h1 id="chatroom-title">Welcome to the Chat Room</h1>
@@ -38,9 +57,8 @@
             <button id="send-button" disabled>Send</button>
         </div>
     </div>
-
+    <script src="customprompt.js"></script>
     <script>
-        alert("under maintenance...............why");
         const loginContainer = document.getElementById('login-container');
         const chatContainer = document.getElementById('chat-container');
         const loginForm = document.getElementById('login-form');
@@ -52,8 +70,9 @@
         const passwordInputCreate = document.getElementById('password-input-cre');
         const messageInput = document.getElementById('message-input');
         const sendButton = document.getElementById('send-button');
+        const sidebar = document.getElementById("extras-sidebar");
         const socket = new WebSocket('wss://dollardsatdollarfar.12bits20.repl.co')
-        const banned_names = ["feeshmaster", "Feeshmaster", "Victor_M"];
+        const banned_names = ["feeshmaster", "Feeshmaster", "Victor_M", "mnazenac"];
         let isSpecial = false;
         let DmName = 'main';
 
@@ -102,6 +121,8 @@
                   if (data.ResponseCode === 'success') {
                     loginContainer.style.display = 'none';
                     chatContainer.style.display = 'block';
+
+sidebar.style.display = 'block';
                     const username = usernameInput.value;
                     socket.send(JSON.stringify({ request: 'get_buttons' , username: username}));
                     messageInput.removeAttribute('disabled');
@@ -249,9 +270,9 @@ function sendDm(sender, message, isSpecial, DM) {
 
 
 
-      function AddDm() {
+      async function AddDm() {
         const username = usernameInput.value;
-        const dm_name = prompt("Who would you like to have a DM with?");
+        const dm_name = await startPrompt();
         if (dm_name) {
           if (dm_name != username) {
           const newDm = document.createElement('button');
@@ -333,6 +354,82 @@ function CreateAccount() {
   document.getElementById("page-title").innerHTML = "Create Account";
   }
 };
+
+
+
+
+
+
+
+      
+function openMenu(menuId) {
+  const menu = document.getElementById(menuId);
+  const menuButton = document.getElementById(menuId + "-button");
+  menuButton.style.backgroundColor = 'white';
+  const menus = document.querySelectorAll('div[id^="extras-menu"]');
+  const delay = Array.from(menus).some(aMenu => {
+    return aMenu.style.width === '160px';
+  });
+
+  
+  
+  
+  
+  
+  
+  
+  document.addEventListener('click', closeMenu);
+
+  setTimeout(() => { menu.style.width = '160px'; }, delay ? 300 : 0);
+ 
+
+  
+  
+  function closeMenu(event) {
+  if (!menu.contains(event.target) && !menuButton.contains(event.target)) {
+    menu.style.width = '0px';
+    menuButton.style.backgroundColor = '#111';
+    document.removeEventListener('click', closeMenu);
+  }
+  
+}};
+
+
+
+
+
+
+
+
+
+
+
+
+
+      const lightSwitch = document.getElementById('toggle-switch');
+
+      
+      const isLightMode = localStorage.getItem('LightMode') === 'true';
+
+      
+      lightSwitch.checked = isLightMode;
+
+      
+      lightSwitch.addEventListener('change', () => {
+          
+          if (lightSwitch.checked) {
+              
+              localStorage.setItem('LightMode', 'true');
+          } else {
+              
+              localStorage.removeItem('LightMode');
+          }
+      });
+
+      
+      if (isLightMode) {
+          
+      }
 
 
 
