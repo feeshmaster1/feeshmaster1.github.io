@@ -67,9 +67,9 @@ function addModList() {
 function updateModList() {
     const modList = document.getElementById("modListUl");
     // fetch all the mods from github
-    fetch("https://api.github.com/repos/R74nCom/sandboxels/git/trees/main?recursive=1").then(res => res.json())
+    fetch("https://api.github.com/repos/feeshmaster/feeshmaster.github.io/git/trees/main?recursive=1").then(res => res.json())
     .then(res => {
-        res.tree.filter(f => f.path.startsWith("mods/")).map(f => f.path).forEach(file => {
+        res.tree.filter(f => f.path.startsWith("g/sand-game/mods")).map(f => f.path).forEach(file => {
             const link = document.createElement("a");
             link.target = "_blank";
             link.innerText = file.slice(5);
