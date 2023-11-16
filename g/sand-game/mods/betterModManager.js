@@ -72,8 +72,8 @@ function updateModList() {
         res.tree.filter(f => f.path.startsWith("g/sand-game/mods/")).map(f => f.path).forEach(file => {
             const link = document.createElement("a");
             link.target = "_blank";
-            link.innerText = file.slice(5);
-            link.href = file.splice(12);
+            link.innerText = file.slice(0);
+            link.href = file;
             const span = document.createElement("span");
             if (awaitingReload.includes(file)) {
                 span.className = "awaitingReload";
