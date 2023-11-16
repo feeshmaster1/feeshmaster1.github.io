@@ -6,8 +6,8 @@ elements.incarnation = {
     },
     category: "tools",
 };
-elements.WALL = {
-		color: "#828282", //Terraria reference
+elements.super_wall = {
+		color: "#828282", 
 		behavior: behaviors.WALL,
 		tempHigh: 18446744073709551615184467440737095516151844674407370955161518446744073709551615,
 		category: "solids",
