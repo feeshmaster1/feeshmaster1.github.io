@@ -9,7 +9,7 @@ elements.pure_Heat = {
 elements.pure_cold = {
     color: "#4747ff",
     tool: function(pixel) {
-        pixel.temp -= 9837429837948374983247937439284739247392879898732497943298;
+        pixel.temp -= 983742983794837498324793743928473924739287989873249794329898985;
 		pixelTempCheck(pixel)
     },
     category: "tools",
