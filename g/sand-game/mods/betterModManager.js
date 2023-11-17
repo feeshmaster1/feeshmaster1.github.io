@@ -93,6 +93,7 @@ function updateModList() {
                     // why on earth addMod adds "mods/" automatically and removeMod doesnt
                     removeMod(file.startsWith("mods/") ? file : "mods/" + file);
                 } else {
+                    alert(file);
                     addMod(file.replace(/mods\//g, ""));
                 }
                 awaitingReload.push(file);
