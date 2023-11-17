@@ -73,7 +73,7 @@ function updateModList() {
             const link = document.createElement("a");
             link.target = "_blank";
             link.innerText = file.slice(17);
-            link.href = file.substr(0,30) + file.substr(41+1);
+            link.href = "../../" + file;
             const span = document.createElement("span");
             if (awaitingReload.includes(file)) {
                 span.className = "awaitingReload";
