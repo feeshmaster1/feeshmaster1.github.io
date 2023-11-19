@@ -41,6 +41,7 @@ elements.fire_douser = {
     behavior: behaviors.LIQUID,
     tempHigh: 6000,
     stateHigh: "nitrogen",
+    temp: -167,
     tempLow: -200,
     stateLow: "liquid_nitrogen",
     category: "liquids",
