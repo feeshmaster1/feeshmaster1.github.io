@@ -130,3 +130,169 @@ body {
   font-size: 16px;
   float: right;
 }
+
+#extras-sidebar {
+  height: 100%;
+  width: 100px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 16px;
+  display: none;
+}
+
+
+#extras-sidebar a {
+  padding: 6px 6px 6px 6px;
+  text-decoration: none;
+  font-size: 15px;
+  color: #818181;
+  display: block;
+}
+
+
+#extras-menu {
+  height: 100%;
+  width: inherit;
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  left: 100px;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 16px;
+}
+
+.extras-button:hover {
+  background-color: #363636;
+}
+
+.extras-button:active {
+  transition: 0.5s;
+  background-color: white;
+}
+
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+
+/* Add this new class for light mode */
+.light-mode {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+body.light-mode {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+#chat-container.light-mode {
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#chat-header.light-mode {
+    background-color: #949494;
+    color: #000000;
+}
+
+#chat-messages.light-mode {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+#chat-input.light-mode {
+    background-color: #949494;
+    
+    
+}
+
+#message-input.light-mode {
+    background-color: #b3b3b3;
+    color: #000000;
+}
+
+#send-button.light-mode {
+    background-color: #37a354;
+    color: #ffffff;
+}
+
+.message.light-mode {
+    background-color: #37a354;
+    color: #ffffff;
+}
+
+.message-sender.light-mode {
+    color: #ffffff;
+}
+
+.dm-button.light-mode {
+    background-color: #37a354;
+    color: #ffffff;
+}
+
+#add-button.light-mode {
+    background-color: #37a354;
+    color: #ffffff;
+}
+
+#main.light-mode {
+    background-color: #37a354;
+    color: #ffffff;
+}
+
+#deleteDm.light-mode {
+    background-color: #37a354;
+    color: #ffffff;
+}
+
+
+
+
