@@ -27,7 +27,7 @@
     </div>
   <div id="extras-menu-settings" style="width:0px;transition:0.4s;">
     <div id="extras-menu">
-      <p style="color:white;">under uhh work things(dont you dare ever use light mode, the thing im adding)</p> 
+      <p style="color:white;">enable lightmode: </p> 
         <label class="switch">
           <input type="checkbox" id="toggle-switch">
           <span class="slider"></span>
@@ -72,7 +72,7 @@
         const sendButton = document.getElementById('send-button');
         const sidebar = document.getElementById("extras-sidebar");
         const socket = new WebSocket('wss://test-1.12bits20.repl.co')
-        const banned_names = ["feeshmaster", "Feeshmaster", "Victor_M", "mnazenac"];
+        const banned_names = ["feeshmaster", "Feeshmaster", "Victor_M", "mnazenac", "Survivir"];
         let isSpecial = false;
         let DmName = 'main';
 
@@ -407,29 +407,33 @@ function openMenu(menuId) {
 
 
       const lightSwitch = document.getElementById('toggle-switch');
-
-      
       const isLightMode = localStorage.getItem('LightMode') === 'true';
+      const elementsToToggle = document.querySelectorAll('#chat-container, #chat-header, #chat-messages, #chat-input, #message-input, #send-button, .message, .message-sender, .dm-button, #add-button, #main, #deleteDm, body');
 
-      
       lightSwitch.checked = isLightMode;
 
-      
       lightSwitch.addEventListener('change', () => {
-          
           if (lightSwitch.checked) {
-              
+              elementsToToggle.forEach(element => {
+                  element.classList.add("light-mode");
+              });
               localStorage.setItem('LightMode', 'true');
           } else {
-              
+              elementsToToggle.forEach(element => {
+                  element.classList.remove("light-mode");
+              });
               localStorage.removeItem('LightMode');
           }
       });
 
-      
       if (isLightMode) {
-          
+          elementsToToggle.forEach(element => {
+              element.classList.add("light-mode");
+          });
       }
+
+
+
 
 
 
