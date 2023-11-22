@@ -254,11 +254,24 @@ function sendDm(sender, message, isSpecial, DM) {
             const messageElement = document.createElement('div');
             messageElement.className = isSpecial ? 'message special-message' : 'message';
             const localTimestamp = new Date(timestamp).toLocaleString();
-            messageElement.innerHTML = `
+            /*messageElement.innerHTML = `
                 <div class="message-sender">${sender}</div>
                 <div class="message-text">${message}</div>
                 <div class="message-timestamp">${localTimestamp}</div>
-            `;
+            `;*/
+            const message_sender = document.createElement('div');
+            const message_text = document.createElement('div');
+            const message_timestamp = 
+              document.createElement('div');
+            message_sender.textContent = sender;
+            message_text.textContent = message;
+            message_timestamp.textContent = localTimestamp;
+            message_sender.className = "message-sender";
+            message_sender.className = "message-text";
+            message_sender.className = "message-timestamp";
+          messageElement.appendChild(message_sender);
+          messageElement.appendChild(message_text);
+          messageElement.appendChild(message_timestamp);
             chatMessages.appendChild(messageElement);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
